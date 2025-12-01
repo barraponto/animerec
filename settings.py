@@ -1,3 +1,4 @@
+from pathlib import Path
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -7,3 +8,5 @@ class Settings(BaseSettings):
 
     groq_api_key: str = Field(default="")
     huggingface_api_key: str = Field(default="")
+
+    data_path: Path = Field(default=Path("./data/anime_with_synopsis.csv"))
