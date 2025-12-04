@@ -1,10 +1,8 @@
-from langchain_core.tools.base import BaseTool
-
-
 from langchain.agents import create_agent
+from langchain.tools import BaseTool, tool
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
-from langchain.tools import tool
+from langchain_core.messages import BaseMessage
 
 from settings import Settings
 
@@ -38,3 +36,16 @@ class RecommendChain:
             You need to recommend the best anime to the user.
             """,
         )
+
+    def ask(self, prompt: str) -> list[BaseMessage]:
+        output = self.agent.invoke(
+            {
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": prompt,
+                    }
+                ]
+            }
+        )
+        return [message for message in output["messages"] if message.content]
