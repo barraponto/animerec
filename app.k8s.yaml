@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: animerec-secrets
+data:
+  GROQ_API_KEY: '<your-groq-api-key>'
+  HUGGINGFACE_API_KEY: '<your-huggingface-api-key>'
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: animerec
+  labels:
+    app.kubernetes.io/name: animerec
+spec:
+  containers:
+  - name: animerec
+    image: ghcr.io/barraponto/animerec:latest
+    ports:
+      - containerPort: 8501
+        name: streamlit-app
+    envFrom:
+      - secretRef:
+          name: animerec-secrets
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: animerec
+spec:
+  selector:
+    app.kubernetes.io/name: animerec
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8501
