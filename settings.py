@@ -10,3 +10,5 @@ class Settings(BaseSettings):
     huggingface_api_key: str = Field(default="")
 
     data_path: Path = Field(default=Path("./data/anime_with_synopsis.csv"))
+    vectorstore_collection: str = Field(default="anime")
+    agent_model: str = Field(default="groq:llama-3.1-8b-instant")

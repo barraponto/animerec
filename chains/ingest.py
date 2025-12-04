@@ -1,7 +1,6 @@
 import pandas as pd
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
@@ -11,19 +10,13 @@ from settings import Settings
 class IngestChain:
     required_columns: set[str] = {"name", "genres", "synopsis"}
 
-    def __init__(self, settings: Settings):
+    def __init__(self, settings: Settings, vectorstore: Chroma):
         self.settings: Settings = settings
-        self.embedder: HuggingFaceEmbeddings = HuggingFaceEmbeddings(
-            model_name="sentence-transformers/all-MiniLM-L6-v2",
-        )
+        self.vectorstore: Chroma = vectorstore
         self.splitter: RecursiveCharacterTextSplitter = (
             RecursiveCharacterTextSplitter.from_tiktoken_encoder(
                 chunk_size=64, chunk_overlap=16
             )
-        )
-        self.vectorstore: Chroma = Chroma(
-            embedding_function=self.embedder,
-            collection_name="anime",
         )
 
     def _ensure_data(self, data: pd.DataFrame | None = None):
