@@ -6,6 +6,9 @@
       "commitizen": {
         "pkg-path": "commitizen"
       },
+      "kubeconform": {
+        "pkg-path": "kubeconform"
+      },
       "pre-commit": {
         "pkg-path": "pre-commit"
       },
@@ -140,6 +143,126 @@
       "outputs": {
         "dist": "/nix/store/vqgdi4rpwqqwnlb00lh6gy5xlx22kh12-python3.13-commitizen-4.9.1-dist",
         "out": "/nix/store/2lz92dfxc7ffglacgb62h7c2lyyzfj90-python3.13-commitizen-4.9.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "kubeconform",
+      "broken": false,
+      "derivation": "/nix/store/brafv2nsdsaicv53qlg3rhvsnfvbn5xc-kubeconform-0.7.0.drv",
+      "description": "FAST Kubernetes manifests validator, with support for Custom Resources",
+      "install_id": "kubeconform",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5ae3b07d8d6527c42f17c876e404993199144b6a",
+      "name": "kubeconform-0.7.0",
+      "pname": "kubeconform",
+      "rev": "5ae3b07d8d6527c42f17c876e404993199144b6a",
+      "rev_count": 901419,
+      "rev_date": "2025-11-24T06:39:56Z",
+      "scrape_date": "2025-11-26T02:53:39.255034Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.7.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/qg631z5dnxxhafkydmsbkzs10wv0ixqz-kubeconform-0.7.0"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "kubeconform",
+      "broken": false,
+      "derivation": "/nix/store/x2yb8ccqhqgwzh1cc4ir4z70bpzkir2q-kubeconform-0.7.0.drv",
+      "description": "FAST Kubernetes manifests validator, with support for Custom Resources",
+      "install_id": "kubeconform",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5ae3b07d8d6527c42f17c876e404993199144b6a",
+      "name": "kubeconform-0.7.0",
+      "pname": "kubeconform",
+      "rev": "5ae3b07d8d6527c42f17c876e404993199144b6a",
+      "rev_count": 901419,
+      "rev_date": "2025-11-24T06:39:56Z",
+      "scrape_date": "2025-11-26T03:03:01.509200Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.7.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/zx29y7q7r01wzl2x8vji5qv8zamk8qi6-kubeconform-0.7.0"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "kubeconform",
+      "broken": false,
+      "derivation": "/nix/store/7chk68h0hwnwhmn8vvbm5wdmwpbjycp8-kubeconform-0.7.0.drv",
+      "description": "FAST Kubernetes manifests validator, with support for Custom Resources",
+      "install_id": "kubeconform",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5ae3b07d8d6527c42f17c876e404993199144b6a",
+      "name": "kubeconform-0.7.0",
+      "pname": "kubeconform",
+      "rev": "5ae3b07d8d6527c42f17c876e404993199144b6a",
+      "rev_count": 901419,
+      "rev_date": "2025-11-24T06:39:56Z",
+      "scrape_date": "2025-11-26T03:12:39.767993Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.7.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/9mxx67n9saxgqvibzizvbmj4gm3nh4li-kubeconform-0.7.0"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "kubeconform",
+      "broken": false,
+      "derivation": "/nix/store/nq0sfgx9qs6scxr0n9b9rl6iy2ncl99g-kubeconform-0.7.0.drv",
+      "description": "FAST Kubernetes manifests validator, with support for Custom Resources",
+      "install_id": "kubeconform",
+      "license": "Apache-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=5ae3b07d8d6527c42f17c876e404993199144b6a",
+      "name": "kubeconform-0.7.0",
+      "pname": "kubeconform",
+      "rev": "5ae3b07d8d6527c42f17c876e404993199144b6a",
+      "rev_count": 901419,
+      "rev_date": "2025-11-24T06:39:56Z",
+      "scrape_date": "2025-11-26T03:22:08.740676Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.7.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/c7pxr2bwlr264rph1nwxwbavaji2iv4v-kubeconform-0.7.0"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
