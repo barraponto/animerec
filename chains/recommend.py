@@ -2,7 +2,7 @@ from langchain.agents import create_agent
 from langchain.tools import BaseTool, tool
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
-from langchain_core.messages import BaseMessage
+from langchain_core.messages import AIMessage, HumanMessage
 
 from settings import Settings
 
@@ -37,7 +37,7 @@ class RecommendChain:
             """,
         )
 
-    def ask(self, prompt: str) -> list[BaseMessage]:
+    def ask(self, prompt: str) -> list[AIMessage | HumanMessage]:
         output = self.agent.invoke(
             {
                 "messages": [
@@ -48,4 +48,8 @@ class RecommendChain:
                 ]
             }
         )
-        return [message for message in output["messages"] if message.content]
+        return [
+            message
+            for message in output["messages"]
+            if message.content and isinstance(message, (AIMessage, HumanMessage))
+        ]
