@@ -1,3 +1,27 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: animerec-volume
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 500Mi
+  accessModes:
+    - ReadOnlyMany
+  hostPath:
+    path: "/home/barraponto/data/animerec"
+---
+kind: PersistentVolumeClaim
+metadata:
+  name: animerec-volumeclaim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 500Mi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,6 +40,10 @@ spec:
         app.kubernetes.io/name: animerec
         app.kubernetes.io/version: "0.1.0"
     spec:
+      volumes:
+      - name: animerec-storage
+        persistentVolumeClaim:
+          claimName: animerec-volumeclaim
       # Security context to enforce non-root user (matches Dockerfile)
       securityContext:
         runAsNonRoot: true
@@ -25,6 +53,9 @@ spec:
       - name: animerec
         image: docker.io/library/animerec:latest
         imagePullPolicy: Never
+        volumeMounts:
+        - name: animerec-storage
+          mountPath: /app/data
         ports:
           - containerPort: 8501
             name: streamlit-app
