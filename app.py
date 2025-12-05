@@ -15,6 +15,7 @@ def init_settings():
 @st.cache_resource
 def init_vectorstore(settings: Settings):
     ingest_chain = IngestChain(settings, vectorstore)
+    ingest_chain.ingest()
     return ingest_chain.vectorstore
 
 
