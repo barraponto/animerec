@@ -3,7 +3,7 @@ FROM ghcr.io/astral-sh/uv:python3.13-bookworm-slim
 
 # Setup a non-root user
 RUN groupadd --system --gid 999 nonroot \
- && useradd --system --gid 999 --uid 999 --create-home nonroot
+    && useradd --system --gid 999 --uid 999 --create-home nonroot
 
 # Install the project into `/app`
 WORKDIR /app
@@ -38,8 +38,4 @@ ENTRYPOINT []
 # Use the non-root user to run our application
 USER nonroot
 
-# Run the FastAPI application by default
-# Uses `fastapi dev` to enable hot-reloading when the `watch` sync occurs
-# Uses `--host 0.0.0.0` to allow access from outside the container
-# Note in production, you should use `fastapi run` instead
-CMD ["streamlit", "run", "app.py"]
+CMD ["streamlit", "run", "app.py", "--server.address", "0.0.0.0", "--server.headless", "true"]
