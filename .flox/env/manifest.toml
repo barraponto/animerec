@@ -20,6 +20,7 @@ uv.pkg-path = "uv"
 commitizen.pkg-path = "commitizen"
 pre-commit.pkg-path = "pre-commit"
 kubeconform.pkg-path = "kubeconform"
+gcc-unwrapped.pkg-path = "gcc-unwrapped"
 # gum.pkg-path = "gum"
 # gum.version = "^0.14.5"
 
