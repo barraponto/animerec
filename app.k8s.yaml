@@ -59,7 +59,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: myapp.test
+  - host: animerec.ludologico.com.br
     http:
       paths:
       - path: /
