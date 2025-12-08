@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadOnlyMany
   hostPath:
-    path: "/home/barraponto/data/animerec"
+    path: "/data/animerec"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
