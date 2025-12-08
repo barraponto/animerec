@@ -17,6 +17,7 @@ metadata:
   name: animerec-volumeclaim
 spec:
   storageClassName: manual
+  volumeName: animerec-volume
   accessModes:
     - ReadOnlyMany
   resources:
@@ -42,28 +43,28 @@ spec:
         app.kubernetes.io/version: "0.1.0"
     spec:
       volumes:
-      - name: animerec-storage
-        persistentVolumeClaim:
-          claimName: animerec-volumeclaim
+        - name: animerec-storage
+          persistentVolumeClaim:
+            claimName: animerec-volumeclaim
       # Security context to enforce non-root user (matches Dockerfile)
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
         fsGroup: 999
       containers:
-      - name: animerec
-        image: docker.io/library/animerec:latest
-        imagePullPolicy: Never
-        volumeMounts:
-        - name: animerec-storage
-          mountPath: /app/data
-        ports:
-          - containerPort: 8501
-            name: streamlit-app
-            protocol: TCP
-        envFrom:
-          - secretRef:
-              name: animerec-secrets
+        - name: animerec
+          image: docker.io/library/animerec:latest
+          imagePullPolicy: Never
+          volumeMounts:
+            - name: animerec-storage
+              mountPath: /app/data
+          ports:
+            - containerPort: 8501
+              name: streamlit-app
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: animerec-secrets
 ---
 apiVersion: v1
 kind: Service
@@ -72,7 +73,7 @@ metadata:
   labels:
     app.kubernetes.io/name: animerec
 spec:
-  type: NodePort  # Explicitly set - use LoadBalancer or NodePort for external access
+  type: NodePort # Explicitly set - use LoadBalancer or NodePort for external access
   selector:
     app.kubernetes.io/name: animerec
   ports:
@@ -91,13 +92,13 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: animerec.ludologico.com.br
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: animerec-service
-            port:
-              number: 8000
+    - host: animerec.ludologico.com.br
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: animerec-service
+                port:
+                  number: 8000
