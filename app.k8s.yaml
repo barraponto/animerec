@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadOnlyMany
   hostPath:
-    path: "/data/animerec"
+    path: "/mnt/data/animerec"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
